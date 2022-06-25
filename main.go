@@ -11,6 +11,9 @@ func welcome(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "<h1>Welcome to my awesome site!</h1>")
 	} else if r.URL.Path == "/contact" {
 		fmt.Fprint(w, "<h1>Contact page!</h1>")
+	} else {
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprint(w, "<h1>Page not found</h1>")
 	}
 }
 
