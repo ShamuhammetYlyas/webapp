@@ -6,8 +6,12 @@ import (
 )
 
 func welcome(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain")
-	fmt.Fprint(w, "<h1>Welcome to my awesome site!</h1>")
+	w.Header().Set("Content-Type", "text/html")
+	if r.URL.Path == "/" {
+		fmt.Fprint(w, "<h1>Welcome to my awesome site!</h1>")
+	} else if r.URL.Path == "/contact" {
+		fmt.Fprint(w, "<h1>Contact page!</h1>")
+	}
 }
 
 func main() {
